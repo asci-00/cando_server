@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c76b919-3a7f-45e9-b1ed-94d5279233b1" name="디폴트 변경 목록" comment="" />
+    <list default="true" id="8c76b919-3a7f-45e9-b1ed-94d5279233b1" name="디폴트 변경 목록" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,8 +30,10 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jXhIFPY7bypOYF5IApWzwisbFO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,7 +45,7 @@
     <property name="javascript.nodejs.core.library.typings.version" value="12.19.3" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -48,33 +71,57 @@
       <workItem from="1604034685635" duration="1331000" />
       <workItem from="1604054264386" duration="457000" />
       <workItem from="1604319894794" duration="30720000" />
-      <workItem from="1604478135923" duration="2164000" />
+      <workItem from="1604478135923" duration="2946000" />
+      <workItem from="1604481339972" duration="283000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1038" height="168" key="GridCell.Tab.0.bottom" timestamp="1604479358031">
+    <state x="-375" y="541" key="Github.ShareDialog" timestamp="1604480499298">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1038" height="168" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604479358031" />
-    <state width="1038" height="168" key="GridCell.Tab.0.center" timestamp="1604479358031">
+    <state x="-375" y="541" key="Github.ShareDialog/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604480499298" />
+    <state x="-524" y="349" key="Github.UntrackedFilesDialog" timestamp="1604480540434">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1038" height="168" key="GridCell.Tab.0.center/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604479358031" />
-    <state width="1038" height="168" key="GridCell.Tab.0.left" timestamp="1604479358031">
+    <state x="-524" y="349" key="Github.UntrackedFilesDialog/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604480540434" />
+    <state width="1038" height="168" key="GridCell.Tab.0.bottom" timestamp="1604481330437">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1038" height="168" key="GridCell.Tab.0.left/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604479358031" />
-    <state width="1038" height="168" key="GridCell.Tab.0.right" timestamp="1604479358031">
+    <state width="1038" height="168" key="GridCell.Tab.0.bottom/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481330437" />
+    <state width="1038" height="168" key="GridCell.Tab.0.center" timestamp="1604481330436">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1038" height="168" key="GridCell.Tab.0.right/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604479358031" />
-    <state x="-1143" y="292" key="SettingsEditor" timestamp="1604480365322">
+    <state width="1038" height="168" key="GridCell.Tab.0.center/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481330436" />
+    <state width="1038" height="168" key="GridCell.Tab.0.left" timestamp="1604481330436">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state x="-1143" y="292" key="SettingsEditor/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604480365322" />
+    <state width="1038" height="168" key="GridCell.Tab.0.left/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481330436" />
+    <state width="1038" height="168" key="GridCell.Tab.0.right" timestamp="1604481330436">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1038" height="168" key="GridCell.Tab.0.right/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481330436" />
+    <state x="-1143" y="292" key="SettingsEditor" timestamp="1604481474124">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1143" y="292" key="SettingsEditor/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481474124" />
+    <state x="-1016" y="447" width="589" height="208" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1604481404771">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1016" y="447" width="589" height="208" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1440.877/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1604481404771" />
   </component>
 </project>
