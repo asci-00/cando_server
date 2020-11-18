@@ -119,6 +119,53 @@ app.post("/equip/insert", async (req, res) => {
     });
   }
 });//소화기 정보 입력 api
+app.post("/equip/check", async (req, res) => {
+  const Eq_id = req.body['equip_id'];
+  console.log(Eq_id);
+  try {
+    const connection = await DB.getConnection();
+    const select = await connection.query(
+      'SELECT * FROM Check_Log WHERE equip_id =?;', [Eq_id]);
+    const eid = select[0][0]['id'];
+    const Eq_id1 = select[0][0]['equip_id'];
+    const date = select[0][0]['date'];
+    const check_res = select[0][0]['check_res'];
+    const user = select[0][0]['user'];
+    let results = { 'id': eid, 'equip_id': Eq_id1, 'date': date, 'check_res': check_res, 'user': user };
+    const string = encodeURIComponent(results.toString());
+    console.log(results);
+    res.contentType('application/json');
+    const data = JSON.stringify(results);
+    res.header('Content-Length', data.length);
+    res.end(data);
+    res.redirect(JSON.stringify(results));
+    res.status(201).send();
+  } catch (err) {
+    res.status(400).json({
+      message: "Error"
+    });
+    console.log(err);
+  }
+});// 소화기 점검기록 조회
+app.post("/equip/check/insert", async (req, res) => {
+  const Eq_id = req.body['equip_id'];
+  const check_res = req.body['check_res'];
+  const user = req.body['user'];
+  console.log(Eq_id);
+  try {
+    const connection = await DB.getConnection();
+    const select = await connection.query(
+      'INSERT INTO Check_Log(equip_id,date,check_res,user) VALUES(?,now(),?,?);', [Eq_id, check_res, user]);
+    res.status(201).json({
+      message: "Success"
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: "Error"
+    });
+    console.log(err);
+  }
+});//소화기 점검기록 입력
 app.post("/login", async (req, res) => {
   const uid = req.body["user"];
   const password = req.body["passwd"];
