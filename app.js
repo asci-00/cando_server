@@ -45,13 +45,13 @@ app.get("/equip/list", async (req, res) => {
       }
       const id = select[0][i]['id'];
       const serial = select[0][i]['serial'];
-      const branch_check = select[0][i]['branch_check'];
+      const prs = select[0][i]['prs'];
       const image = select[0][i]['image'];
       const location_x = select[0][i]['location_x'];
       const location_y = select[0][i]['location_y'];
       const boarding_location = select[0][i]['boarding_location'];
       const map = select[0][i]['map'];
-      let results = { 'id:': id, 'serial': serial, 'branch_check': branch_check, 'image': image, 'location_x': location_x, 'location_y': location_y, 'boarding_location': boarding_location, 'map': map };
+      let results = { 'id:': id, 'serial': serial, 'prs': prs, 'image': image, 'location_x': location_x, 'location_y': location_y, 'boarding_location': boarding_location, 'map': map };
       data.push(results);
       i = i + 1;
       console.log(results);
@@ -101,14 +101,15 @@ app.post("/equip/branch_check", async (req, res) => {
 app.post("/equip/insert", async (req, res) => {
   const serial = req.body['serial'];
   const boarding_location = req.body['boarding_location'];
+  const prs = req.body['pressure'];
   const location_x = req.body['location_x'];
   const location_y = req.body['location_y'];
   /*console.log(id,serial,location);*/
   try {
     const connection = await DB.getConnection();
     const insert = await connection.query(
-      "INSERT INTO Equip_info(serial,branch_check,location_x,location_y,boarding_location) VALUES (?,0,?,?,?);",
-      [serial, location_x, location_y, boarding_location]
+      "INSERT INTO Equip_info(serial,prs,location_x,location_y,boarding_location) VALUES (?,?,?,?,?);",
+      [serial, prs, location_x, location_y, boarding_location]
     );
     res.status(201).json({
       message: "Success"
@@ -131,7 +132,8 @@ app.post("/equip/check", async (req, res) => {
     const date = select[0][0]['date'];
     const check_res = select[0][0]['check_res'];
     const user = select[0][0]['user'];
-    let results = { 'id': eid, 'equip_id': Eq_id1, 'date': date, 'check_res': check_res, 'user': user };
+    const pressure = select[0][0]['prs'];
+    let results = { 'id': eid, 'equip_id': Eq_id1, 'date': date, 'check_res': check_res, 'user': user, 'prs': pressure };
     const string = encodeURIComponent(results.toString());
     console.log(results);
     res.contentType('application/json');
@@ -148,14 +150,19 @@ app.post("/equip/check", async (req, res) => {
   }
 });// 소화기 점검기록 조회
 app.post("/equip/check/insert", async (req, res) => {
-  const Eq_id = req.body['equip_id'];
+  const serial = req.body['serial'];
+  // const Eq_id = req.body['equip_id'];
   const check_res = req.body['check_res'];
   const user = req.body['user'];
-  console.log(Eq_id);
+  const pressure = req.body['prs'];
   try {
     const connection = await DB.getConnection();
+    const search = await connection.query(
+      'SELECT * FROM Equip_info WHERE serial = ?;', [serial]);
+    const result = search[0][0]['id'];
+    console.log(result);
     const select = await connection.query(
-      'INSERT INTO Check_Log(equip_id,date,check_res,user) VALUES(?,now(),?,?);', [Eq_id, check_res, user]);
+      'INSERT INTO Check_Log(equip_id,date,check_res,user,prs) VALUES(?,now(),?,?,?);', [result, check_res, user, pressure]);
     res.status(201).json({
       message: "Success"
     });
@@ -165,7 +172,7 @@ app.post("/equip/check/insert", async (req, res) => {
     });
     console.log(err);
   }
-});//소화기 점검기록 입력
+});//점검기록 입력
 app.post("/login", async (req, res) => {
   const uid = req.body["user"];
   const password = req.body["passwd"];
