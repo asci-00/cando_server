@@ -11,8 +11,8 @@ const DB = mysql.createPool({ //DB연동2
   host: "127.0.0.1",
   port: 3306,
   user: "root",
-  password: "asdf1234!",
-  database: "cando",
+  password: "doublefloat",
+  database: "equipment",
   dateStrings: "date",
   multipleStatements: true
 });
@@ -23,15 +23,43 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/img/");
+    cb(null, "/home/user/projects/web/public/imgs/");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   }
 });//사진 업로드1
 const upload = multer({ storage: storage }); //사진 업로드2
-let ald = true;
 /* 여기서 부터 SERVER API LIST */
+app.get("check_List", async (req,res) => {
+  try {
+    const connection = await DB.getConnection();
+    const select = await connection.query(
+      "SELECT * FROM check_List");
+    await connection.release()
+    let i = 0;
+    let data = [];
+    while (1) {
+      if (select[0][i] == null) {
+        break;
+      }
+      const id = select[0][i]['id'];
+      const type = select[0][i]['type'];
+      const message = select[0][i]['message'];
+      const remarks = select[0][i]['remarks'];
+      let results = { 'id:': id, 'type': type, 'message': message, 'remarks': remarks };
+      data.push(results);
+      i = i + 1;
+    }
+    res.json(data);
+    res.status(201).send();
+  } catch (err) {
+    res.status(400).json({
+      message: "error"
+    });
+    console.log(err)
+  }
+});//check_List 조회
 app.get("/equip/list", async (req, res) => {
   try {
     const connection = await DB.getConnection();
@@ -61,7 +89,6 @@ app.get("/equip/list", async (req, res) => {
     }
     await connection.release();
     res.json(data);
-
     res.status(201).send();
 
   } catch (err) {
@@ -415,7 +442,7 @@ app.get('/download/map', async (req, res) => {
     const connection = await DB.getConnection();
     const search = await connection.query('SELECT * FROM Map WHERE name = ?;', [FN]);
     let path = search[0][0]['image'];
-    res.sendFile(__dirname + "/public/img/" + path, function (err) {
+    res.sendFile("/home/user/projects/web/public/imgs/" + path, function (err) {
       if (err) {
         console(err);
       } else
@@ -434,7 +461,7 @@ app.get('/download/fet', async (req, res) => {
     const connection = await DB.getConnection();
     const search = await connection.query('SELECT * FROM Equip_info WHERE serial = ?;', [FN]);
     let path = search[0][0]['image'];
-    res.sendFile(__dirname + "/public/img/" + path, function (err) {
+    res.sendFile("/home/user/projects/web/public/imgs/" + path, function (err) {
       if (err) {
         console(err);
       } else
@@ -471,3 +498,4 @@ app.use(function (err, req, res, next) {
   res.json("error code 502!!!");
 });
 module.exports = app;
+
